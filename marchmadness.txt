@@ -1,0 +1,31 @@
+Kansas,Kansas,1,South,1
+Austin Peay,Tennessee,-1,South,16
+Colorado,Colorado,-1,South,8
+Connecticut,Connecticut,-1,South,9
+Maryland,Maryland,18,South,5
+S. Dakota,South Dakota,-1,South,12
+California,California,23,South,4
+Hawaii,Hawaii,-1,South,13
+Arizona,Arizona,17,South,6
+Wichita,Kansas,-1,South,11
+Miami,Florida,10,South,3
+Buffalo,New York,-1,South,14
+Iowa,Iowa,15,South,7
+Temple,Pennsylvania,-1,South,10
+Villanova,Pennsylvania,6,South,2
+UNC Asheville,North Carolina,-1,South,15
+Oregon,Oregon,5,West,1
+Holy Cross,Massachusetts,-1,West,16
+Saint Joseph’s,Pennsylvania,-1,West,8
+Cinncinnati,Ohio,-1,West,9
+Baylor,Texas,21,West,5
+Yale,Connecticut,-1,West,12
+Duke,North Carolina,19,West,4
+UNCW,North Carolina,-1,West,13
+Texas,Texas,-1,West,6
+UNI,Iowa,-1,West,11
+Texas A&M,Texas,15,West,3
+Green Bay,Wisconsin,-1West,14
+Oregon St.,Oregon,-1,West,7
+VCU,Virginia,-1,West,10
+Oklahoma,Oklahoma,7,West,2
