@@ -11,19 +11,17 @@ int main(int argc, char *argv[]){
     
     ifstream inFile;
     string data;
+    string teamName;
+    string state;
+    string top25Rank;
+    string region;
+    string regionRank;
 
     inFile.open(argv[1]);
     if(inFile.good()){ //error check
         cout<<"opened successfully"<<endl;
         while(getline(inFile, data)){ 
-            stringstream ss(data); 
-            
-            string teamName;
-            string state;
-            string top25Rank;
-            string region;
-            string regionRank
-
+            stringstream ss(data);
             getline(ss, teamName, ',');
             getline(ss, state, ',');
             getline(ss, top25Rank, ',');
@@ -66,7 +64,7 @@ int main(int argc, char *argv[]){
 
     getline(cin,choice);
 
-    while (choice != "9"){
+    while (choice < "10"){
         if (choice == "1"){
             marchMadness.printTeamNames();
         }
@@ -77,7 +75,7 @@ int main(int argc, char *argv[]){
             marchMadness.printRegionalRanking();
         }
         else if (choice == "4"){
-        	cout << "Enter Team Name:" << endl;
+            cout << "Enter Team Name:" << endl;
             getline(cin, cinTeam);
             cout << "Enter State:" << endl;
             getline(cin, cinState);
@@ -133,8 +131,10 @@ int main(int argc, char *argv[]){
 	    cout << "10. Quit" << endl;
         getline(cin, choice);
     }
-    cout << "Goodbye!" << endl;
-
+    if(choice == "10") {
+    	cout << "Goodbye!" << endl;
+    }
+    
     return 0;
 }
 
