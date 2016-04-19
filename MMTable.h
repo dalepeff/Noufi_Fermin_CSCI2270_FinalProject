@@ -10,11 +10,19 @@
  #include <string>
  #include <vector>
 
+ using namespace std;
+
  struct TeamElem{
- 	std::string title;
- 	int year;
+   std::string team;
+   std::string state;
+   int top25_rank;
+   std::string region;
+   int region_rank;
+   int games_won;
+   int games_lost;
+   int games_tied;
  	TeamElem *next;
-     TeamElem *previous;
+  TeamElem *previous;
 
  	TeamElem(){};
  	TeamElem(std::string in_team, std::string in_state, int in_top25_rank, std::string in_region, int in_region_rank)
@@ -47,7 +55,7 @@
  		TeamElem *findTeam(std::string team);
     void compareTeams(std::string team1, std::string team2);
     void playTeams(std::string team1, std::string team2);
-    void findCommonStates();
+    void findCommonStates(std::string team);
  	private:
  		int hashSum(std::string x, int s);
  		int tableSize = 10;

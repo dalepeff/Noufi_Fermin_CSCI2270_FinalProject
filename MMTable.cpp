@@ -3,12 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <fstream>
-#include <istream>>
+#include <istream>
 #include <sstream>
 
 using namespace std;
 
-HashTable::HashTable()
+MMTable::MMTable()
 {
     //ctor
     for(int i = 0; i<tableSize; i++) {          //empty record initialize
@@ -16,7 +16,7 @@ HashTable::HashTable()
     }
 }
 
-HashTable::~HashTable()
+MMTable::~MMTable()
 {
     //dtor
 }
@@ -25,11 +25,13 @@ HashTable::~HashTable()
 void MMTable::printTableContents() {
     TeamElem *temp;
     int counter = 0;
-    cout<<"Teams Eligible for March Madness:"<<endl;
+    int num = 0;
+    cout<<"Teams Eligible for March Madness, by hash index:"<<endl;
     for(int i = 0; i<tableSize; i++) {
         temp = hashTable[i];
         while (temp != NULL) {
-            cout<<temp->team<<", "<<temp->state<<endl;
+            num++;
+            cout<<num<<": "<<temp->team<<", "<<temp->state<<endl;
             temp = temp->next;
             counter++;
         }
@@ -41,7 +43,7 @@ void MMTable::printTableContents() {
 void MMTable::printTeamNames() {
   //sort table in a array/vector of type TeamElem alphabetically -> can we use assignment 1 stuff for this?
   //print vector/array
-
+  cout<<"In print team names function"<<endl;
 }
 
 
@@ -49,7 +51,7 @@ void MMTable::printTop25Ranking() {
   //sort table in a array/vector of type TeamElem in order by overall rank from 1-25, -1s at the bottom
   //need a variable to keep track of element ranking just put in
   //print vector/array
-
+    cout<<"In print top 25 function"<<endl;
 }
 
 
@@ -57,7 +59,7 @@ void MMTable::printRegionalRanking() {
   //sort table in a array/vector of type TeamElem in order by regional rank
   //There should be 4 of each number, so we would put team into array if it was equal to or +1 from the previous data?
   //print vector/array
-
+    cout<<"In print regional rankings function"<<endl;
 }
 
 
@@ -81,7 +83,7 @@ void MMTable::deleteTeam(string team) {
     int index = hashSum(team, tableSize);
     TeamElem *temp = hashTable[index];
     while (temp != NULL) {
-        if (temp->title == name) {
+        if (temp->team == team) {
             if(temp->previous != NULL) {                //if not the 1st element in an index row
                 temp->previous->next = temp->next;
                 if(temp->next != NULL)                  //if not the last element in an index row
@@ -101,46 +103,47 @@ void MMTable::deleteTeam(string team) {
         temp = temp->next;
     }
     delete temp;
-    cout << "Team not found in March Madness Database" <<endl;
+    cout << "Delete Team: Team not found in March Madness Database" <<endl;
+    cout<<endl;
     return;
 }
 
-
-HashElem *MMTable::findTeam(string team) {
+TeamElem *MMTable::findTeam(string name) {
     int index = hashSum(name, tableSize);
     TeamElem *temp = hashTable[index];
     while (temp != NULL) {
-        if (temp->title == name) {
-            cout<< temp->region<" "<<temp->region_rank <<": " << temp->team <<", "<< temp->state <<endl;
+        if (temp->team == name) {
+            cout<< temp->region<<" #"<<temp->region_rank <<": " << temp->team <<", "<< temp->state <<endl;
             cout<<"Games won so far: "<<temp->games_won<<", "<<"Games lost so far: "<<temp->games_lost<<", "<<"Games tied so far: "<<temp->games_tied<<endl;
             if(temp->top25_rank > 0) {
               cout<<"Overall Rank: "<<temp->top25_rank<<endl;
             } else {
               cout<<"Not ranked in Top 25"<<endl;
             }
+            cout<<endl;
             return temp;
         }
         temp = temp->next;
     }
-    cout << "Team not found in March Madness Database" <<endl;
+    cout << "Find Team: Team not found in March Madness Database" <<endl;
+    cout<<endl;
     return temp;
 }
 
 
-void MMTable::compareTeams(string team1, string team2) {
-    cout<<"TEAM 1: "
-    TeamElem *team1 = findTeam(team1);
+void MMTable::compareTeams(string name1, string name2) {
     cout<<endl;
+    cout<<"TEAM 1: "<<endl;
+    TeamElem *team1 = findTeam(name1);
     cout<<"vs."<<endl;
-    cout<<endl;
-    cout<<"TEAM 2: "
-    TeamElem *team2 = findTeam(team2);
+    cout<<"TEAM 2: "<<endl;
+    TeamElem *team2 = findTeam(name2);
     cout<<endl;
 
-    if(team1 != NULL || team2 != NULL) {
-        if((team1->top25_rank > team2->top25_rank) || (team1->region_rank > team2->region_rank) {
+    if(team1 != NULL && team2 != NULL) {
+        if((team1->top25_rank > team2->top25_rank) || (team1->region_rank > team2->region_rank)) {
           cout<<team1->team<<" likely to beat "<<team2->team<<endl;
-        } else if((team2->top25_rank > team1->top25_rank) || (team2->region_rank > team1->region_rank) {
+        } else if((team2->top25_rank > team1->top25_rank) || (team2->region_rank > team1->region_rank)) {
           cout<<team1->team<<" likely to beat "<<team2->team<<endl;
         } else {
           cout<<team1->team<<" and "<<team2->team<<" likely to tie."<<endl;
@@ -148,76 +151,75 @@ void MMTable::compareTeams(string team1, string team2) {
     } else {
       cout<<"One or more teams not found in March Madness Database" <<endl;
     }
+    cout<<endl;
     return;
 }
 
 
-void MMTable::playTeams(string team1, string team2) {
-    TeamElem *team1 = findTeam(team1);
-    TeamElem *team2 = findTeam(team2);
+void MMTable::playTeams(string name1, string name2) {
+    TeamElem *team1 = findTeam(name1);
+    TeamElem *team2 = findTeam(name2);
 
-    if((team1->top25_rank > 0 && team2->top25_rank > 0) || team1->region == team2->region) {
-      if((team1->top25_rank > team2->top25_rank) || (team1->region_rank > team2->region_rank) {
-        cout<<team1->team<<" beats "<<team2->team<<endl;
-        team1->games_won++;
-        team2->games_lost++;
-      } else if((team2->top25_rank > team1->top25_rank) || (team2->region_rank > team1->region_rank) {
-        cout<<team2->team<<" beats "<<team1->team<<endl;
-        team2->games_won++;
-        team1->games_lost++;
-      } else {
-        cout<<team1->team<<" and "<<team2->team<<" tie."<<endl;
-        team2->games_tied++;
-        team1->games_tied++;
-      }
-    } else {
-      cout<<"Teams must be in Top 25 or in same bracket region to play each other."<<endl;
+    if(team1 != NULL && team2 != NULL) {
+          if((team1->top25_rank > 0 && team2->top25_rank > 0) || team1->region == team2->region) {
+              if((team1->top25_rank > team2->top25_rank) || (team1->region_rank > team2->region_rank)) {
+                cout<<team1->team<<" beats "<<team2->team<<endl;
+                team1->games_won++;
+                team2->games_lost++;
+              } else if((team2->top25_rank > team1->top25_rank) || (team2->region_rank > team1->region_rank)) {
+                cout<<team2->team<<" beats "<<team1->team<<endl;
+                team2->games_won++;
+                team1->games_lost++;
+              } else {
+                cout<<team1->team<<" and "<<team2->team<<" tie."<<endl;
+                team2->games_tied++;
+                team1->games_tied++;
+              }
+          } else {
+            cout<<"Teams must be in Top 25 or in same bracket region to play each other."<<endl;
+          }
     }
+    cout<<endl;
     return;
 }
 
 
 
-void MMTable::findCommonStates(string team_name) {
+void MMTable::findCommonStates(string name) {
     //Traverse hash table until finding a match to input team name
-    int index = hashSum(team, tableSize);
+    int index = hashSum(name, tableSize);
     TeamElem *team1 = hashTable[index];
     while (team1 != NULL) {
-        if (team1->team == team_name)
+        if (team1->team == name)
             break;
         team1 = team1->next;
     }
     if(team1 == NULL) {
-      cout << "Team not found in March Madness Database" <<endl;
-      return;
-    }
-
-    // Find matching teams with common state
-    TeamElem *team2;
-    int counter = 0;
-    int teams_in_state = 1;
-      cout<<team1->state<<":"<<endl;
-      cout<<team1<<endl;
-
-    for(int i = 0; i<tableSize; i++) {
-        team2 = hashTable[i];
-        while (team2 != NULL) {
-            if(team2->state == team1->state) {
-              cout<<team2->team<<endl;
-              teams_in_state++;
-            }
-            team2 = team2->next;
-            counter++;
-        }
-    }
-    if(!counter) {
-      cout<<"empty"<<endl;
+        cout << "Team not found in March Madness Database" <<endl;
+        return;
     } else {
-      cout<<team1->state<<" has "<<teams_in_state<<" teams in March Madness"<<endl;
-    }
+        // Find matching teams with common state
+        TeamElem *team2;
+        int counter = 0;
+        int teams_in_state = 1;
+        cout<<team1->state<<":"<<endl;
+        cout<<team1<<endl;
 
-    return;
-
+        for(int i = 0; i<tableSize; i++) {
+            team2 = hashTable[i];
+            while (team2 != NULL) {
+                if(team2->state == team1->state) {
+                  cout<<team2->team<<endl;
+                  teams_in_state++;
+                }
+                team2 = team2->next;
+                counter++;
+            }
+        }
+        cout<<team1->state<<" has "<<teams_in_state<<" teams in March Madness"<<endl;
+        cout<<endl;
+        return;
+  }
 }
 
 
