@@ -9,22 +9,24 @@ using namespace std;
 int menuSelect() {
     int choice = 0;
     while(choice == 0) {
+      cout<<endl;
       cout << "======Main Menu======" << endl;
-      cout << "1. Print Team Names" << endl;
-      cout << "2. Print Top 25 Ranking" << endl;
-      cout << "3. Print Regional Ranking" << endl;
+      cout << "1. List Teams by Bracket Region" << endl;
+      cout << "2. List Teams by Top 25 Rank" << endl;
+      cout << "3. List Teams by Games Won So Far" << endl;
       cout << "4. Insert A Team" << endl;
       cout << "5. Delete A Team" << endl;
-      cout << "6. Find Team" << endl;
-      cout << "7. Play Teams" << endl;
-      cout << "8. Compare Teams" << endl;
-      cout << "9. Find Common States" << endl;
+      cout << "6. Find A Team" << endl;
+      cout << "7. Compare Two Teams" << endl;
+      cout << "8. Play Two Teams Against Eachother" << endl;
+      cout << "9. Find Teams in Same State" << endl;
       cout << "10. Print Table Contents" <<endl;
       cout << "11. Quit" << endl;
       scanf("%d", &choice);
     }
     return choice;
-}
+
+} // End Menu Function
 
 
 int main(int argc, char *argv[]){
@@ -41,6 +43,7 @@ int main(int argc, char *argv[]){
     inFile.open(argv[1]);
     if(inFile.good()){ //error check
         cout<<"opened successfully"<<endl;
+        cout<<endl;
         while(getline(inFile, data)){
             stringstream ss(data);
             getline(ss, teamName, ',');
@@ -48,16 +51,11 @@ int main(int argc, char *argv[]){
             getline(ss, top25Rank, ',');
             getline(ss, region, ',');
             getline(ss, regionRank, ',');
-            // cout << teamName << endl;
-            // cout << state << endl;
-            // cout << top25Rank << endl;
-            // cout << region << endl;
-            // cout << regionRank << endl;
             int intTop25Rank = atoi(top25Rank.c_str());
             int intRegionRank = atoi(regionRank.c_str());
             marchMadness.insertTeam(teamName, state, intTop25Rank, region, intRegionRank);
         }
-    }else{
+    } else{
         cout << "File unsuccessfully opened" << endl;
     }
     inFile.close(); //close the file
@@ -70,16 +68,18 @@ int main(int argc, char *argv[]){
     string cinRegionRank;
     string cinTeam2;
 
+    cout << "~MARCH MADNESS SIMULATOR~"<<endl;
     int choice = menuSelect();
-    while (1){
+
+    while (1) {
         if (choice == 1){
-            marchMadness.printTeamNames();
+            marchMadness.printTeamRegions();
         }
         else if (choice == 2){
             marchMadness.printTop25Ranking();
         }
         else if (choice == 3){
-            marchMadness.printRegionalRanking();
+            marchMadness.printGamesWon();
         }
         else if (choice == 4){
             cout<<endl;
@@ -110,35 +110,35 @@ int main(int argc, char *argv[]){
             getline(cin, cinTeam);
             marchMadness.findTeam(cinTeam);
         }
-        else if (choice == 8){
+        else if (choice == 7){
           cout<<endl;
         	cout << "Enter Team 1:" << endl;
           cin.ignore();
         	getline(cin, cinTeam);
         	cout << "Enter Team 2:" << endl;
-          cin.ignore();
         	getline(cin, cinTeam2);
         	marchMadness.compareTeams(cinTeam, cinTeam2);
         }
-        else if (choice == 7){
+        else if (choice == 8){
           cout<<endl;
           cout << "Enter Team 1:" << endl;
           cin.ignore();
         	getline(cin, cinTeam);
         	cout << "Enter Team 2:" << endl;
-          cin.ignore();
         	getline(cin, cinTeam2);
         	marchMadness.playTeams(cinTeam, cinTeam2);
         }
         else if (choice == 9){
           cout<<endl;
-          cout << "Enter Team 1:" << endl;
+          cout << "Enter Team Name:" << endl;
           cin.ignore();
         	getline(cin, cinTeam);
           marchMadness.findCommonStates(cinTeam);
-        } else if(choice == 10) {
+        }
+        else if(choice == 10) {
         	marchMadness.printTableContents();
-        } else if(choice == 11) {
+        }
+        else if(choice == 11) {
           cout<<endl;
         	cout << "Goodbye!" << endl;
           return 0;
@@ -147,6 +147,9 @@ int main(int argc, char *argv[]){
             return 0;
         }
         choice = menuSelect();
-    }
+
+    } // End main While loop
+
     return 0;
-}
+
+} // End Main

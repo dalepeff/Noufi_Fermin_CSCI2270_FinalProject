@@ -47,9 +47,9 @@
  		MMTable();
  		~MMTable();
  		void printTableContents();
-    void printTeamNames();
+    void printTeamRegions();
     void printTop25Ranking();
-    void printRegionalRanking();
+    void printGamesWon();
     void insertTeam(std::string team, std::string state, int top25_ranking, std::string region, int region_rank);
  		void deleteTeam(std::string team);
  		TeamElem *findTeam(std::string team);
