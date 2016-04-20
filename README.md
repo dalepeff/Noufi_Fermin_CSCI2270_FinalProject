@@ -23,7 +23,9 @@ To run from the command line, make sure you have all 4 necessary files in the pr
 	- MMTable.cpp
 	- MMTable.h
 	- marchMadness.txt
-or
+
+OR
+
 	-program_name.exe
 	-marchMadness.txt
 
