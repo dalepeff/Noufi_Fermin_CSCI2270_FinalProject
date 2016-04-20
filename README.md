@@ -19,6 +19,7 @@ The program displays a main menu upon launch, and reads in user input from the c
 
 How to Run:
 To run from the command line, make sure you have all 4 necessary files in the program folder or the .exe program.  These are:
+
 	- main.cpp
 	- MMTable.cpp
 	- MMTable.h
@@ -33,7 +34,9 @@ You must compile the program before executing if you do not have the .exe file. 
 	./program_name marchMadness.txt
 	
 You may pick any option from the main menu by entering the number corresponding to the function you would like to execute and then hitting enter.
+
 EX: 	
+
 	===Main Menu===
 	...
 	...
