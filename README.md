@@ -31,6 +31,7 @@ OR
 	-marchMadness.txt
 
 You must compile the program before executing if you do not have the .exe file.  Then, run the program with the following command:
+	
 	./program_name marchMadness.txt
 	
 You may pick any option from the main menu by entering the number corresponding to the function you would like to execute and then hitting enter.
@@ -47,7 +48,7 @@ EX:
 	You type: 4
 
 The program will then display a new set of command line prompts specific to "Insert Team."
-Follow the corresponding prompts in a similar manner.  When the specific function is finished running, you will be returned to the main menu to pick a new option or QUIT the program by typing 11.
+Follow the corresponding prompts in a similar manner.  When the specific function is finished running, you will be returned to the main menu to pick a new option or QUIT the program by typing 11.  Any invalid input will be addressed and the program will quit and must be restarted.
 	
 	
 Dependencies:
