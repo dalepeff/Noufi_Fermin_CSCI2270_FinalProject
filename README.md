@@ -1,7 +1,7 @@
 # Noufi_Fermin_CSCI2270_FinalProject
 
 Project Summary:
-Program simulates a March Madness bracket using Hash Tables with conflict resolution through linked lists. We are planning on creating the following functions: 
+Program simulates a March Madness bracket using Hash Tables with conflict resolution through linked lists. We are planning on creating the following functions:
 
 	1. List Teams by Region
 	2. List Teams by Top 25 Rank
@@ -31,9 +31,9 @@ OR
 	-marchMadness.txt
 
 You must compile the program before executing if you do not have the .exe file.  Then, run the program with the following command:
-	
+
 	./program_name marchMadness.txt
-	
+
 You may pick any option from the main menu by entering the number corresponding to the function you would like to execute and then hitting enter.
 
 EX: 	
@@ -49,11 +49,13 @@ EX:
 
 The program will then display a new set of command line prompts specific to "Insert Team."
 Follow the corresponding prompts in a similar manner.  When the specific function is finished running, you will be returned to the main menu to pick a new option or QUIT the program by typing 11.  Any invalid input will be addressed and the program will quit and must be restarted.
-	
-	
+
+
 Dependencies:
 If you do not already have the .exe file, you must have the software required to compile C++ files.
 To install, you can find a number of options here: https://gcc.gnu.org/
+Recommended Install Command: g++ -o executable main.cpp MMTable.cpp
+Recommended Executable Command: ./executable marchmadness.txt
 
 System	Requirements:
 Program can run on Windows, MAC OS X and Linux.
@@ -65,4 +67,3 @@ Contributors:
 
 
 Open issues/bugs:
-

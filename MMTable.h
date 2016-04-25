@@ -58,7 +58,7 @@
     void findCommonStates(std::string team);
  	private:
  		int hashSum(std::string x, int s);
- 		int tableSize = 10;
+ 		static const int tableSize = 10;
  		TeamElem *hashTable[10];
 
  };

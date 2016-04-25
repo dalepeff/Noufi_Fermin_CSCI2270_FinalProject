@@ -42,7 +42,7 @@ int main(int argc, char *argv[]){
 
     inFile.open(argv[1]);
     if(inFile.good()){ //error check
-        cout<<"opened successfully"<<endl;
+        //cout<<"opened successfully"<<endl;
         cout<<endl;
         while(getline(inFile, data)){
             stringstream ss(data);

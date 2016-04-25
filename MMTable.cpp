@@ -48,7 +48,7 @@ void MMTable::printTeamRegions() {
       temp = hashTable[i];
       while (temp != NULL) {
         if(temp->region == "South")
-            cout<<temp->region": "<<temp->team<<endl;
+            cout<<temp->region<<": "<<temp->team<<endl;
         temp = temp->next;
         counter++;
       }
@@ -83,12 +83,50 @@ void MMTable::printTeamRegions() {
 
 
 void MMTable::printTop25Ranking() {
-
+  TeamElem *temp;
+  bool bracketExists = 0;
+  cout << "Teams' Top 25 Ranking, Unordered: " << endl;
+  for (int i = 0; i < tableSize; i++){
+    if (hashTable[i]!=NULL){
+      temp = hashTable[i];
+      while(temp != NULL){
+        cout << temp -> team << ", "<< temp -> state << ", Top 25 Ranking: " << temp -> top25_rank << endl;
+        temp = temp -> next;
+      }
+      bracketExists = 1;
+    }
+  }
+  if (bracketExists == 0){
+    cout << "The March Madness Hash Table is Empty." << endl;
+  }
 }
 
 
 void MMTable::printGamesWon() {
+  TeamElem *temp;
+  bool bracketExists = 0;
+  bool teamsHavePlayed = 0;
+  cout << "Teams' Games Won, Unordered: " << endl;
+  for (int i = 0; i < tableSize; i++){
+    if (hashTable[i]!=NULL){
+      temp = hashTable[i];
+      while(temp != NULL){
+        if (temp -> games_won != 0){
+          cout << temp -> team << ", "<< temp -> state << ": Games Won " << temp -> games_won << endl;
+          teamsHavePlayed = 1;
+        }
+        temp = temp -> next;
+      }
+      bracketExists = 1;
 
+    }
+  }
+  if (bracketExists == 0){
+    cout << "The March Madness Hash Table is Empty." << endl;
+  }
+  else if (teamsHavePlayed == 0){
+    cout << "No Team Has Played Yet" << endl;
+  }
 }
 
 
