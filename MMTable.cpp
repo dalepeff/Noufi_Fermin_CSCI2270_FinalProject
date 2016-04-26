@@ -90,7 +90,10 @@ void MMTable::printTop25Ranking() {
     if (hashTable[i]!=NULL){
       temp = hashTable[i];
       while(temp != NULL){
-        cout << temp -> team << ", "<< temp -> state << ", Top 25 Ranking: " << temp -> top25_rank << endl;
+        if (temp -> top25_rank == -1)
+          cout << temp -> team << ", "<< temp -> state << " *** Not in Top 25 ***" << endl;
+        else
+          cout << temp -> team << ", "<< temp -> state << ", Top 25 Ranking: " << temp -> top25_rank << endl;
         temp = temp -> next;
       }
       bracketExists = 1;
