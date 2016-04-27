@@ -53,11 +53,7 @@ Follow the corresponding prompts in a similar manner.  When the specific functio
 
 Dependencies:
 If you do not already have the .exe file, you must have the software required to compile C++ files.
-To install, you can find a number of options here: https://gcc.gnu.org/
-
-Recommended Install Command: g++ -o executable main.cpp MMTable.cpp
-
-Recommended Executable Command: ./executable marchmadness.txt
+To install, you can find a number of options here: https://gcc.gnu.org/.   Recommended Install Command: g++ -o executable main.cpp MMTable.cpp.   Recommended Executable Command: ./executable marchmadness.txt
 
 System	Requirements:
 Program can run on Windows, MAC OS X and Linux.
