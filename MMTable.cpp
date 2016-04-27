@@ -93,7 +93,7 @@ void MMTable::printTop25Ranking() {
         if (temp -> top25_rank == -1) {
           //
         }else
-          cout << temp -> team << ", "<< temp -> state << ", Top 25 Ranking: " << temp -> top25_rank << endl;
+          cout << temp -> team << ", "<< temp -> state << ": #" << temp -> top25_rank << endl;
         temp = temp -> next;
       }
       bracketExists = 1;
