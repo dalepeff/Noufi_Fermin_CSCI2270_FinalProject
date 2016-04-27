@@ -1,7 +1,7 @@
 # Noufi_Fermin_CSCI2270_FinalProject
 
 Project Summary:
-Program simulates a March Madness bracket using Hash Tables with conflict resolution through linked lists. We are planning on creating the following functions:
+Program simulates a March Madness bracket, utilizing Hash Tables with conflict resolution through linked lists. The program implements the following functions as menu options:
 
 	1. List Teams by Region
 	2. List Teams Ranked in Top 25
