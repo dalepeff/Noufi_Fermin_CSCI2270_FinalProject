@@ -85,14 +85,14 @@ void MMTable::printTeamRegions() {
 void MMTable::printTop25Ranking() {
   TeamElem *temp;
   bool bracketExists = 0;
-  cout << "Teams' Top 25 Ranking, Unordered: " << endl;
+  cout << "Teams' Top 25 Ranking, by hash index: " << endl;
   for (int i = 0; i < tableSize; i++){
     if (hashTable[i]!=NULL){
       temp = hashTable[i];
       while(temp != NULL){
-        if (temp -> top25_rank == -1)
-          cout << temp -> team << ", "<< temp -> state << " *** Not in Top 25 ***" << endl;
-        else
+        if (temp -> top25_rank == -1) {
+          //
+        }else
           cout << temp -> team << ", "<< temp -> state << ", Top 25 Ranking: " << temp -> top25_rank << endl;
         temp = temp -> next;
       }
@@ -109,7 +109,7 @@ void MMTable::printGamesWon() {
   TeamElem *temp;
   bool bracketExists = 0;
   bool teamsHavePlayed = 0;
-  cout << "Teams' Games Won, Unordered: " << endl;
+  cout << "Teams' Games Won, by hash index: " << endl;
   for (int i = 0; i < tableSize; i++){
     if (hashTable[i]!=NULL){
       temp = hashTable[i];
