@@ -4,8 +4,8 @@ Project Summary:
 Program simulates a March Madness bracket using Hash Tables with conflict resolution through linked lists. We are planning on creating the following functions:
 
 	1. List Teams by Region
-	2. List Teams by Top 25 Rank
-	3. List Teams by Games Won So Far
+	2. List Teams Ranked in Top 25
+	3. List Teams: Games Won So Far
 	4. Insert A Team
 	5. Delete A Team
 	6. Find A Team
