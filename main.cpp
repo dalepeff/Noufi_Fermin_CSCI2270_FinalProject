@@ -12,8 +12,8 @@ int menuSelect() {
       cout<<endl;
       cout << "======Main Menu======" << endl;
       cout << "1. List Teams by Bracket Region" << endl;
-      cout << "2. List Teams by Top 25 Rank" << endl;
-      cout << "3. List Teams by Games Won So Far" << endl;
+      cout << "2. List Teams Ranked in Top 25" << endl;
+      cout << "3. List Teams: Games Won So Far" << endl;
       cout << "4. Insert A Team" << endl;
       cout << "5. Delete A Team" << endl;
       cout << "6. Find A Team" << endl;
