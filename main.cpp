@@ -89,11 +89,25 @@ int main(int argc, char *argv[]){
             cout << "Enter State:" << endl;
             getline(cin, cinState);
             cout << "Enter Top 25 Rank (enter 1-25, or -1 if not in Top 25):" << endl;
-            getline(cin, cinTop25Rank);
+            int cinTop25Rank;
+            cin>> cinTop25Rank;
+            while(cin.fail()) {
+                    cout << "Please Enter a valid number." << std::endl;
+                    cin.clear();
+                    cin.ignore(256,'\n');
+                    cin >> cinTop25rank;
+    }
             cout << "Enter Region: South, West, Midwest or East" << endl;
             getline(cin, cinRegion);
             cout << "Enter Region Rank: 1-16" << endl;
-            getline(cin, cinRegionRank);
+            int cinRegionRank;
+            cin >> cinRegionRank;
+            while(cin.fail()) {
+                    cout << "Please Enter a valid number." << std::endl;
+                    cin.clear();
+                    cin.ignore(256,'\n');
+                    cin >> cinRegionRank;
+    }
             marchMadness.insertTeam(cinTeam, cinState, stoi(cinTop25Rank), cinRegion, stoi(cinRegionRank));
         }
         else if (choice == 5){
